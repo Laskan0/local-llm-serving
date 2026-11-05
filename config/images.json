@@ -1,0 +1,4 @@
+{
+  "server": "kaspersky-vllm:stage4",
+  "downloader": "kaspersky-model-downloader:stage2"
+}

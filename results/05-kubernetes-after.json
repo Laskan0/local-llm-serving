@@ -1,0 +1,74 @@
+{
+  "timestamp_utc": "2026-11-04T13:34:02.007943+00:00",
+  "checks": {
+    "pvc_bound": true,
+    "init_completed": true,
+    "nonroot_effective_uid_gid": true,
+    "pod_nonroot_enforced": true,
+    "restricted_containers": true,
+    "no_service_account_token": true,
+    "no_service_environment_links": true,
+    "server_model_mount_readonly": true,
+    "downloader_model_mount_writable": true,
+    "model_revision_matches": true,
+    "server_api_secret_reference": true,
+    "downloader_hf_secret_reference": true,
+    "hf_token_not_in_server_environment_spec": true,
+    "api_token_not_in_downloader_environment_spec": true,
+    "configmap_matches_source": true,
+    "effective_context_matches_configmap": true,
+    "service_internal": true,
+    "exactly_one_ready_pod": true
+  },
+  "all_passed": true,
+  "pod": "vllm-676f6ccc9-6cbfw",
+  "pod_uid": "18db942a-1a71-4a30-95af-ce74c44e4498",
+  "pvc_uid": "32131897-6050-49ae-8a60-d0d0079aaa89",
+  "pvc_volume": "pvc-32131897-6050-49ae-8a60-d0d0079aaa89",
+  "storage_class": "standard",
+  "configmap": "vllm-config-9gdb664db9",
+  "inference_config": {
+    "model_path": "/models/qwen",
+    "served_model_name": "qwen",
+    "dtype": "bfloat16",
+    "max_model_len": 3072,
+    "max_num_seqs": 4,
+    "max_num_batched_tokens": 1024,
+    "kv_cache_memory_bytes": 268435456,
+    "enforce_eager": true,
+    "port": 8000
+  },
+  "resources": {
+    "limits": {
+      "cpu": "6",
+      "memory": "7680Mi"
+    },
+    "requests": {
+      "cpu": "5",
+      "memory": "6Gi"
+    }
+  },
+  "runtime": {
+    "uid": 10001,
+    "gid": 10001,
+    "marker": {
+      "id": "Qwen/Qwen2.5-1.5B-Instruct",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "weights_size_bytes": 3087467144,
+    "weights_mtime_ns": 1793741421505099005,
+    "marker_mtime_ns": 1793741421557099005,
+    "effective_max_model_len": 3072,
+    "memory_current_bytes": 7370899456,
+    "anon_bytes": 6000070656,
+    "file_bytes": 1290059776,
+    "inactive_file_bytes": 872271872,
+    "memory_peak_bytes": 8053063680
+  },
+  "images": [
+    {
+      "name": "server",
+      "image_id": "sha256:093cf02dc5357593524aab174a0ca6107ea2ff57fed8a7e5e83deaba255ef04f"
+    }
+  ]
+}

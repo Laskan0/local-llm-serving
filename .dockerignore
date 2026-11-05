@@ -1,0 +1,16 @@
+# В контекст сборки включаются только файлы, необходимые двум образам.
+**
+!Dockerfile
+!requirements.txt
+!downloader/
+!downloader/**
+!scripts/
+!scripts/check_dependencies.py
+!scripts/server_entrypoint.py
+!scripts/download_model.py
+!config/
+!config/model.json
+!config/inference.json
+!config/logging.json
+!app/
+!app/privacy_logging.py

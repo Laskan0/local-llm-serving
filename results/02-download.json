@@ -1,0 +1,12 @@
+{
+  "model": {
+    "id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "fresh_download_succeeded": true,
+  "weights_size_bytes": 3087467144,
+  "original_sha256": "dd924a11b4c220f385b51ffa522daea7c9f3d850e31b162bb5661df483c6d3ee",
+  "fresh_sha256": "dd924a11b4c220f385b51ffa522daea7c9f3d850e31b162bb5661df483c6d3ee",
+  "weights_identical": true,
+  "fresh_cache_offline_reuse": true
+}

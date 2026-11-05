@@ -1,0 +1,150 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vllm
+spec:
+  replicas: 1
+  # При обновлении в памяти остаётся только одна копия модели.
+  strategy:
+    type: Recreate
+  progressDeadlineSeconds: 900
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: vllm
+  template:
+    metadata:
+      labels:
+        app: vllm
+    spec:
+      automountServiceAccountToken: false
+      # Автоматическая переменная VLLM_PORT=tcp://... от Service конфликтует
+      # с настройками vLLM. Для DNS и port-forward она не требуется.
+      enableServiceLinks: false
+      terminationGracePeriodSeconds: 45
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: download-model
+          image: kaspersky-model-downloader:stage2
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          env:
+            - name: HF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hf-access
+                  key: token
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: '2'
+              memory: 3Gi
+          volumeMounts:
+            - name: model-cache
+              mountPath: /models
+            - name: downloader-home
+              mountPath: /home/app
+            - name: downloader-tmp
+              mountPath: /tmp
+      containers:
+        - name: server
+          image: kaspersky-vllm:stage4
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          ports:
+            - name: http
+              containerPort: 8000
+          env:
+            - name: VLLM_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: vllm-api
+                  key: token
+            - name: INFERENCE_CONFIG
+              value: /app/runtime/inference.json
+            - name: VLLM_CPU_OMP_THREADS_BIND
+              valueFrom:
+                configMapKeyRef:
+                  name: vllm-config
+                  key: VLLM_CPU_OMP_THREADS_BIND
+            - name: OMP_NUM_THREADS
+              valueFrom:
+                configMapKeyRef:
+                  name: vllm-config
+                  key: OMP_NUM_THREADS
+          resources:
+            requests:
+              cpu: '5'
+              memory: 6Gi
+            limits:
+              cpu: '6'
+              memory: 7680Mi
+          startupProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 60
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 5
+            timeoutSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+          volumeMounts:
+            - name: model-cache
+              mountPath: /models
+              readOnly: true
+            - name: inference-config
+              mountPath: /app/runtime
+              readOnly: true
+            - name: server-home
+              mountPath: /home/app
+            - name: server-tmp
+              mountPath: /tmp
+            - name: shm
+              mountPath: /dev/shm
+      volumes:
+        - name: model-cache
+          persistentVolumeClaim:
+            claimName: model-cache
+        - name: inference-config
+          configMap:
+            name: vllm-config
+        - name: downloader-home
+          emptyDir: {}
+        - name: downloader-tmp
+          emptyDir: {}
+        - name: server-home
+          emptyDir: {}
+        - name: server-tmp
+          emptyDir: {}
+        - name: shm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 512Mi

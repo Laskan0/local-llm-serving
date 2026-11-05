@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "nonempty_response": true,
+  "elapsed_seconds": 5.651,
+  "usage": {
+    "prompt_tokens": 35,
+    "total_tokens": 37,
+    "completion_tokens": 2,
+    "prompt_tokens_details": null
+  }
+}

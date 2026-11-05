@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "name": "single_question",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 1.851
+    },
+    {
+      "name": "interactive_history_reset",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 3.121
+    },
+    {
+      "name": "unavailable_server",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.063
+    },
+    {
+      "name": "missing_token",
+      "passed": true,
+      "exit_code": 1,
+      "seconds": 0.042
+    }
+  ],
+  "all_passed": true,
+  "scope": "Real CLI against preserved local Kubernetes server; synthetic prompts only.",
+  "unit_tests": {
+    "passed": 20,
+    "new_client_tests": 5,
+    "command": "python3 -m unittest discover -s tests -v"
+  },
+  "privacy_checks": {
+    "passed": 8,
+    "report": ".cache/reports/ask-privacy.json",
+    "payload_and_token_scan_passed": true
+  },
+  "source_sha256": {
+    "scripts/ask.py": "20874ea8c431ecaeae7d88d11df7ffa4425e78ef2387345d4982cdadf23803e3",
+    "tests/test_ask.py": "c9b9e9c01448fc9a0057f15e3dd9a0d9cde86649db52511dcf9731fe8bec4b99",
+    "README.md": "f185c3d1beb3a61a7e1f51c0eed5237115226f2b46c9d9483326828667819f04"
+  }
+}

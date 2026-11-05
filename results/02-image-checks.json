@@ -1,0 +1,76 @@
+{
+  "timestamp_utc": "2026-11-03T20:24:37.064194+00:00",
+  "images": [
+    {
+      "tag": "kaspersky-vllm:stage2",
+      "id": "sha256:8d4f6fac9d119324592fab6a987c97e66b6155d8afb83be2d472fe328991a575",
+      "architecture": "arm64",
+      "size_bytes": 871805188,
+      "user": "10001:10001"
+    },
+    {
+      "tag": "kaspersky-model-downloader:stage2",
+      "id": "sha256:6d708b737c3065c232f8fbd92b4c95af10d9d4c644499a85ea51177bade367c4",
+      "architecture": "arm64",
+      "size_bytes": 58516687,
+      "user": "10001:10001"
+    }
+  ],
+  "checks": [
+    {
+      "name": "kaspersky-vllm:stage2: dependency lock",
+      "passed": true,
+      "exit_code": 0,
+      "output": "dependency_lock_ok packages=152"
+    },
+    {
+      "name": "kaspersky-vllm:stage2: default user and home permissions",
+      "passed": true,
+      "exit_code": 0,
+      "output": "uid_gid_cache_ok"
+    },
+    {
+      "name": "kaspersky-model-downloader:stage2: dependency lock",
+      "passed": true,
+      "exit_code": 0,
+      "output": "dependency_lock_ok packages=16"
+    },
+    {
+      "name": "kaspersky-model-downloader:stage2: default user and home permissions",
+      "passed": true,
+      "exit_code": 0,
+      "output": "uid_gid_cache_ok"
+    },
+    {
+      "name": "downloader: mounted volume permissions",
+      "passed": true,
+      "exit_code": 0,
+      "output": "volume_write_ok"
+    },
+    {
+      "name": "downloader: local model without network",
+      "passed": true,
+      "exit_code": 0,
+      "output": "model_ready source=local"
+    },
+    {
+      "name": "server: reject missing API token",
+      "passed": true,
+      "exit_code": 1,
+      "output": "VLLM_API_KEY must be supplied at runtime"
+    },
+    {
+      "name": "server: reject root override",
+      "passed": true,
+      "exit_code": 1,
+      "output": "Refusing to run the inference server as root"
+    },
+    {
+      "name": "server: detect dependency drift",
+      "passed": true,
+      "exit_code": 0,
+      "output": "dependency_drift_rejected"
+    }
+  ],
+  "all_passed": true
+}

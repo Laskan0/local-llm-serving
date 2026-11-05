@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "same_pvc_uid": true,
+    "same_pvc_volume": true,
+    "same_image_id": true,
+    "same_model_marker": true,
+    "same_weights_size_mtime": true,
+    "base_config_restored": true,
+    "post_checks_passed": true
+  },
+  "all_passed": true,
+  "before": "05-kubernetes-before.json",
+  "after": "05-kubernetes-after.json"
+}

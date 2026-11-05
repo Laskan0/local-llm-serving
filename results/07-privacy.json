@@ -1,0 +1,141 @@
+{
+  "timestamp_utc": "2026-11-04T18:03:19.594382+00:00",
+  "pod": "vllm-6c665c54b9-xtfgz",
+  "cases": [
+    {
+      "name": "normal",
+      "status": 200,
+      "expected_statuses": [
+        200
+      ],
+      "audit_id": "d0f9beadf7204a6e8ce9f54392cb38b9",
+      "passed": true,
+      "response_marker_seen": true,
+      "stream_complete": null,
+      "stream_content_chunks": null,
+      "one_matching_audit_event": true,
+      "audit_status_matches": true,
+      "audit_schema_safe": true,
+      "server_generated_id": true
+    },
+    {
+      "name": "streaming",
+      "status": 200,
+      "expected_statuses": [
+        200
+      ],
+      "audit_id": "c4bf649d12ab4d11b44ed2f2f73daff3",
+      "passed": true,
+      "response_marker_seen": true,
+      "stream_complete": true,
+      "stream_content_chunks": 33,
+      "one_matching_audit_event": true,
+      "audit_status_matches": true,
+      "audit_schema_safe": true,
+      "server_generated_id": true
+    },
+    {
+      "name": "invalid_schema",
+      "status": 400,
+      "expected_statuses": [
+        400,
+        422
+      ],
+      "audit_id": "91670b3cf87144c681d38085864fb956",
+      "passed": true,
+      "response_marker_seen": null,
+      "stream_complete": null,
+      "stream_content_chunks": null,
+      "one_matching_audit_event": true,
+      "audit_status_matches": true,
+      "audit_schema_safe": true,
+      "server_generated_id": true
+    },
+    {
+      "name": "unknown_model",
+      "status": 404,
+      "expected_statuses": [
+        404
+      ],
+      "audit_id": "fd5f6be9ebb24a65839d7ee0ed167731",
+      "passed": true,
+      "response_marker_seen": null,
+      "stream_complete": null,
+      "stream_content_chunks": null,
+      "one_matching_audit_event": true,
+      "audit_status_matches": true,
+      "audit_schema_safe": true,
+      "server_generated_id": true
+    },
+    {
+      "name": "malformed_json",
+      "status": 400,
+      "expected_statuses": [
+        400,
+        422
+      ],
+      "audit_id": "65ce1efa3a1644228f730ba857f946a8",
+      "passed": true,
+      "response_marker_seen": null,
+      "stream_complete": null,
+      "stream_content_chunks": null,
+      "one_matching_audit_event": true,
+      "audit_status_matches": true,
+      "audit_schema_safe": true,
+      "server_generated_id": true
+    },
+    {
+      "name": "wrong_token",
+      "status": 401,
+      "expected_statuses": [
+        401
+      ],
+      "audit_id": "e93f1661abee43ee8277043b36deb1dd",
+      "passed": true,
+      "response_marker_seen": null,
+      "stream_complete": null,
+      "stream_content_chunks": null,
+      "one_matching_audit_event": true,
+      "audit_status_matches": true,
+      "audit_schema_safe": true,
+      "server_generated_id": true
+    },
+    {
+      "name": "missing_token",
+      "status": 401,
+      "expected_statuses": [
+        401
+      ],
+      "audit_id": "d5689491de2d48af9efd9cb956e504f6",
+      "passed": true,
+      "response_marker_seen": null,
+      "stream_complete": null,
+      "stream_content_chunks": null,
+      "one_matching_audit_event": true,
+      "audit_status_matches": true,
+      "audit_schema_safe": true,
+      "server_generated_id": true
+    },
+    {
+      "name": "unknown_path",
+      "status": 404,
+      "expected_statuses": [
+        404
+      ],
+      "audit_id": "fe65a195284946d3904392c93491a3b9",
+      "passed": true,
+      "response_marker_seen": null,
+      "stream_complete": null,
+      "stream_content_chunks": null,
+      "one_matching_audit_event": true,
+      "audit_status_matches": true,
+      "audit_schema_safe": true,
+      "server_generated_id": true
+    }
+  ],
+  "payload_and_token_scan_passed": true,
+  "leaked_categories": [],
+  "audit_event_count": 8,
+  "all_passed": true,
+  "scope": "Normal/SSE/validation/routing/auth HTTP paths; combined container stdout/stderr. Native crashes and SIGKILL are not exhaustively tested."
+}

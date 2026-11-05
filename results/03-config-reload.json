@@ -1,0 +1,38 @@
+{
+  "checks": {
+    "pod_replaced": true,
+    "pvc_preserved": true,
+    "image_unchanged": true,
+    "configmap_changed": true,
+    "context_changed": true,
+    "model_not_rewritten": true
+  },
+  "all_passed": true,
+  "before_pod": "vllm-676bb746b5-xl2f2",
+  "after_pod": "vllm-557dc677ff-nwhpj",
+  "pvc_uid": "32131897-6050-49ae-8a60-d0d0079aaa89",
+  "image_id": "sha256:c0242cefd1f9d1dfdfc7ab425f83502409d63e17ab5d0cbb42ef866ba734c4b4",
+  "context_before": 4096,
+  "context_after": 3072,
+  "resources_before": {
+    "limits": {
+      "cpu": "6",
+      "memory": "7Gi"
+    },
+    "requests": {
+      "cpu": "5",
+      "memory": "6Gi"
+    }
+  },
+  "resources_after": {
+    "limits": {
+      "cpu": "6",
+      "memory": "7680Mi"
+    },
+    "requests": {
+      "cpu": "5",
+      "memory": "6Gi"
+    }
+  },
+  "note": "Final comparison also includes a subsequent memory-limit adjustment from 7Gi to 7680Mi; neither operation rebuilt images or rewrote model files."
+}

@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kaspersky-llm
+resources:
+  - namespace.yaml
+  - pvc.yaml
+  - deployment.yaml
+  - service.yaml
+configMapGenerator:
+  - name: vllm-config
+    files:
+      - inference.json
+    literals:
+      - VLLM_CPU_OMP_THREADS_BIND=0-4
+      - OMP_NUM_THREADS=5
+# Хеш содержимого включён: изменение конфигурации вызывает замену Pod.

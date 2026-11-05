@@ -1,0 +1,37 @@
+{
+  "recorded_utc": "2026-11-04T12:35:28.179654+00:00",
+  "host": {
+    "machine": "arm64",
+    "macos": "26.6.2",
+    "cpu_brand": "Apple M4",
+    "logical_cpus": 10,
+    "memory_bytes": 17179869184,
+    "python_version": "3.13.9"
+  },
+  "docker": {
+    "ServerVersion": "29.3.1",
+    "Architecture": "aarch64",
+    "OSType": "linux",
+    "NCPU": 10,
+    "MemTotal": 10418851840,
+    "KernelVersion": "6.12.76-linuxkit",
+    "OperatingSystem": "Docker Desktop"
+  },
+  "cluster_configuration": {
+    "profile": "kaspersky-llm",
+    "minikube_version": "v1.39.0",
+    "minikube_darwin_arm64_sha256": "78ad8f2f3b35a81e9c2501b1a65961c1521aa4c76fbbe1b5409053db49e29bcd",
+    "kubernetes_version": "v1.34.13",
+    "driver": "docker",
+    "container_runtime": "containerd",
+    "cpus": 8,
+    "memory_mb": 9000,
+    "docker_memory_mib": 10240
+  },
+  "runtime": {
+    "vllm_version": "0.27.1+cpu",
+    "diagnostic_image": "vllm/vllm-openai-cpu:v0.27.1-arm64@sha256:e6745d7ba6610f637c6f22fc06cd730342e50245b6c46767235600483adfbbde",
+    "platform": "linux/arm64",
+    "torch_version_observed": "2.13.0+cpu"
+  }
+}

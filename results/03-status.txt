@@ -1,0 +1,8 @@
+NAME                        READY   STATUS    RESTARTS   AGE
+pod/vllm-557dc677ff-nwhpj   1/1     Running   0          90s
+
+NAME                                STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/model-cache   Bound    pvc-32131897-6050-49ae-8a60-d0d0079aaa89   8Gi        RWO            standard       <unset>                 16m
+
+NAME           TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+service/vllm   ClusterIP   10.107.60.7   <none>        8000/TCP   16m

@@ -1,0 +1,11 @@
+{
+  "model_path": "/models/qwen",
+  "served_model_name": "qwen",
+  "dtype": "bfloat16",
+  "max_model_len": 4096,
+  "max_num_seqs": 4,
+  "max_num_batched_tokens": 1024,
+  "kv_cache_memory_bytes": 268435456,
+  "enforce_eager": true,
+  "port": 8000
+}

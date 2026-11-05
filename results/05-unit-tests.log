@@ -1,0 +1,18 @@
+test_missing_done_and_usage_are_visible (test_benchmark.BenchmarkTests.test_missing_done_and_usage_are_visible) ... ok
+test_small_sample_p95_uses_maximum (test_benchmark.BenchmarkTests.test_small_sample_p95_uses_maximum) ... ok
+test_stream_error_is_not_misclassified_as_success (test_benchmark.BenchmarkTests.test_stream_error_is_not_misclassified_as_success) ... ok
+test_ttft_waits_for_content_and_usage_survives_empty_choices (test_benchmark.BenchmarkTests.test_ttft_waits_for_content_and_usage_survives_empty_choices) ... ok
+test_discarded_loggers_cannot_fall_back_to_raw_stderr (test_privacy_logging.FormatterTests.test_discarded_loggers_cannot_fall_back_to_raw_stderr) ... ok
+test_malformed_record_cannot_trigger_logging_handle_error_dump (test_privacy_logging.FormatterTests.test_malformed_record_cannot_trigger_logging_handle_error_dump) ... ok
+test_message_arguments_and_exception_text_are_never_formatted (test_privacy_logging.FormatterTests.test_message_arguments_and_exception_text_are_never_formatted) ... ok
+test_cancellation_records_disconnect_without_payload (test_privacy_logging.MiddlewareTests.test_cancellation_records_disconnect_without_payload) ... ok
+test_http_status_enum_and_disconnect_after_complete_response (test_privacy_logging.MiddlewareTests.test_http_status_enum_and_disconnect_after_complete_response) ... ok
+test_startup_failure_does_not_log_lifespan_message (test_privacy_logging.MiddlewareTests.test_startup_failure_does_not_log_lifespan_message) ... ok
+test_stream_passes_through_and_logs_only_after_completion (test_privacy_logging.MiddlewareTests.test_stream_passes_through_and_logs_only_after_completion) ... ok
+test_unhandled_error_records_one_safe_500_event (test_privacy_logging.MiddlewareTests.test_unhandled_error_records_one_safe_500_event) ... ok
+test_unknown_path_is_not_logged_verbatim_and_401_is_audited (test_privacy_logging.MiddlewareTests.test_unknown_path_is_not_logged_verbatim_and_401_is_audited) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.064s
+
+OK

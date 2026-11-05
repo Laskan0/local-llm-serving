@@ -1,0 +1,6 @@
+{
+  "vllm_version": "0.27.1+cpu",
+  "diagnostic_image": "vllm/vllm-openai-cpu:v0.27.1-arm64@sha256:e6745d7ba6610f637c6f22fc06cd730342e50245b6c46767235600483adfbbde",
+  "platform": "linux/arm64",
+  "torch_version_observed": "2.13.0+cpu"
+}

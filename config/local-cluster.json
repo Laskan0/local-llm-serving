@@ -1,0 +1,11 @@
+{
+  "profile": "kaspersky-llm",
+  "minikube_version": "v1.39.0",
+  "minikube_darwin_arm64_sha256": "78ad8f2f3b35a81e9c2501b1a65961c1521aa4c76fbbe1b5409053db49e29bcd",
+  "kubernetes_version": "v1.34.13",
+  "driver": "docker",
+  "container_runtime": "containerd",
+  "cpus": 8,
+  "memory_mb": 9000,
+  "docker_memory_mib": 10240
+}

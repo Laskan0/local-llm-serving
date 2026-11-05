@@ -1,0 +1,193 @@
+{
+  "label": "pilot",
+  "started_utc": "2026-11-04T12:28:09.808216+00:00",
+  "protocol": "closed-loop fixed workers, disjoint warmup prompts, full SSE to EOF; nearest-rank p95",
+  "workload_sha256": "5a4e8e2d593e37deabf7baec3a62ae4047bcdf5062e5d63d27efc9ebbe4ca94e",
+  "requested_output_tokens": 64,
+  "temperature": 0,
+  "ignore_eos": true,
+  "seed": 42,
+  "request_timeout_s": 240,
+  "pod": "vllm-59ff7678ff-dt55z",
+  "pod_uid": "45a236d8-8016-4add-b5d6-1fa2b50799b8",
+  "images": [
+    {
+      "allocatedResources": {
+        "cpu": "5",
+        "memory": "6Gi"
+      },
+      "containerID": "containerd://167c18ccb9964fc713f95b08c3edcdf36ef2f2e371fb5e47abe26bd1d707e095",
+      "image": "docker.io/library/kaspersky-vllm:stage4",
+      "imageID": "sha256:093cf02dc5357593524aab174a0ca6107ea2ff57fed8a7e5e83deaba255ef04f",
+      "lastState": {
+        "terminated": {
+          "containerID": "containerd://fc4376a3a816c1cb916fe7cc7180b9acf156b90d5e50efc7663b5be5d149520e",
+          "exitCode": 255,
+          "finishedAt": "2026-11-04T12:24:37Z",
+          "reason": "Unknown",
+          "startedAt": "2026-11-03T22:22:03Z"
+        }
+      },
+      "name": "server",
+      "ready": true,
+      "resources": {
+        "limits": {
+          "cpu": "6",
+          "memory": "7680Mi"
+        },
+        "requests": {
+          "cpu": "5",
+          "memory": "6Gi"
+        }
+      },
+      "restartCount": 1,
+      "started": true,
+      "state": {
+        "running": {
+          "startedAt": "2026-11-04T12:24:41Z"
+        }
+      },
+      "user": {
+        "linux": {
+          "gid": 10001,
+          "supplementalGroups": [
+            10001
+          ],
+          "uid": 10001
+        }
+      },
+      "volumeMounts": [
+        {
+          "mountPath": "/models",
+          "name": "model-cache",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        },
+        {
+          "mountPath": "/app/runtime",
+          "name": "inference-config",
+          "readOnly": true,
+          "recursiveReadOnly": "Disabled"
+        },
+        {
+          "mountPath": "/home/app",
+          "name": "server-home"
+        },
+        {
+          "mountPath": "/tmp",
+          "name": "server-tmp"
+        },
+        {
+          "mountPath": "/dev/shm",
+          "name": "shm"
+        }
+      ]
+    }
+  ],
+  "resources": {
+    "limits": {
+      "cpu": "6",
+      "memory": "7680Mi"
+    },
+    "requests": {
+      "cpu": "5",
+      "memory": "6Gi"
+    }
+  },
+  "configmap": "vllm-config-9gdb664db9",
+  "config": {
+    "OMP_NUM_THREADS": "5",
+    "VLLM_CPU_OMP_THREADS_BIND": "0-4",
+    "inference.json": "{\n  \"model_path\": \"/models/qwen\",\n  \"served_model_name\": \"qwen\",\n  \"dtype\": \"bfloat16\",\n  \"max_model_len\": 3072,\n  \"max_num_seqs\": 4,\n  \"max_num_batched_tokens\": 1024,\n  \"kv_cache_memory_bytes\": 268435456,\n  \"enforce_eager\": true,\n  \"port\": 8000\n}\n"
+  },
+  "model": {
+    "id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+  },
+  "cells": [
+    {
+      "scenario": "input128-c1",
+      "input_tokens": 128,
+      "concurrency": 1,
+      "requests": 4,
+      "warmup_requests": 1,
+      "warmup": [
+        {
+          "index": 0,
+          "status": 200,
+          "success": true,
+          "error": null,
+          "ttft_s": 2.140044959029183,
+          "latency_s": 12.408320834045298,
+          "stream_done": true,
+          "content_chunks": 64,
+          "finish_reason": "length",
+          "prompt_tokens": 128,
+          "output_tokens": 64
+        }
+      ],
+      "successes": 4,
+      "errors": 0,
+      "elapsed_s": 49.99364558409434,
+      "ttft_s": {
+        "median": 1.7443915625335649,
+        "p95": 1.9188989999238402
+      },
+      "latency_s": {
+        "median": 12.423935708531644,
+        "p95": 13.226426249952056
+      },
+      "requests_per_s": 0.08001016835772853,
+      "output_tokens_per_s": 5.120650774894626,
+      "sampled_memory_max_bytes": 8051417088,
+      "sampled_working_set_max_bytes": 7106682880,
+      "memory_peak_since_pod_start_bytes": 8053051392,
+      "memory_events_delta": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "cpu_stat_delta": {
+        "usage_usec": 260527762,
+        "user_usec": 248962710,
+        "system_usec": 11565051,
+        "nice_usec": 0,
+        "nr_periods": 501,
+        "nr_throttled": 46,
+        "throttled_usec": 303241,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "metrics_before": {
+        "vllm:prefix_cache_queries_total": 128.0,
+        "vllm:prefix_cache_hits_total": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:prompt_tokens_total": 128.0,
+        "vllm:generation_tokens_total": 64.0
+      },
+      "metrics_after": {
+        "vllm:prefix_cache_queries_total": 640.0,
+        "vllm:prefix_cache_hits_total": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:prompt_tokens_total": 640.0,
+        "vllm:generation_tokens_total": 320.0
+      },
+      "metrics_delta": {
+        "vllm:prefix_cache_queries_total": 512.0,
+        "vllm:prefix_cache_hits_total": 0.0,
+        "vllm:num_preemptions_total": 0.0,
+        "vllm:prompt_tokens_total": 512.0,
+        "vllm:generation_tokens_total": 256.0
+      },
+      "sampler_errors": [],
+      "memory_sample_interval_s": 5
+    }
+  ],
+  "finished_utc": "2026-11-04T12:29:12.463690+00:00",
+  "restart_count_before": 1,
+  "restart_count_after": 1,
+  "all_passed": true
+}
